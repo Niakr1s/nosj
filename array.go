@@ -35,3 +35,17 @@ func (a *Array) Parse(s *bufio.Scanner) Node {
 
 	return a
 }
+
+func (a *Array) String() string {
+	res := "["
+
+	for _, v := range a.items {
+		res += fmt.Sprintf("%v,", v)
+	}
+
+	res = strings.TrimSuffix(res, ",")
+
+	res += "]"
+
+	return res
+}

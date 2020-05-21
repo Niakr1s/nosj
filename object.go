@@ -57,3 +57,17 @@ func (o *Object) getKey(s *bufio.Scanner) string {
 
 	return res
 }
+
+func (o *Object) String() string {
+	res := "{"
+
+	for k, v := range o.items {
+		res += fmt.Sprintf(`"%s" : "%s",`, k, v)
+	}
+
+	res = strings.TrimSuffix(res, ",")
+
+	res += "}"
+
+	return res
+}
