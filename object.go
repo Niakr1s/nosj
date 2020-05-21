@@ -76,3 +76,23 @@ func (o *Object) String() string {
 
 	return res
 }
+
+func (o *Object) PrettyString() string {
+	return o.prettyString("")
+}
+
+func (o *Object) prettyString(indent string) string {
+	res := "\n" + indent + "{\n"
+
+	newIndent := indent + defaultIndent
+
+	for k, v := range o.items {
+		res += newIndent + fmt.Sprintf("\"%s\" : %s,\n", k, v.prettyString(indent+defaultIndent))
+	}
+
+	res = strings.TrimSuffix(res, ",\n")
+
+	res += "\n" + indent + "}"
+
+	return res
+}

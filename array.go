@@ -54,3 +54,23 @@ func (a *Array) String() string {
 
 	return res
 }
+
+func (a *Array) PrettyString() string {
+	return a.prettyString("")
+}
+
+func (a *Array) prettyString(indent string) string {
+	res := "\n" + indent + "["
+
+	newIndent := indent + defaultIndent
+
+	for _, v := range a.items {
+		res += indent + fmt.Sprintf("%v,", v.prettyString(newIndent))
+	}
+
+	res = strings.TrimSuffix(res, ",")
+
+	res += "\n" + indent + "]"
+
+	return res
+}

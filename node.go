@@ -6,6 +6,11 @@ import (
 )
 
 type Node interface {
-	Parse(s *bufio.Scanner) Node
 	fmt.Stringer
+	Parse(s *bufio.Scanner) Node
+
+	PrettyString() string
+	prettyString(indent string) string
 }
+
+const defaultIndent = "  "

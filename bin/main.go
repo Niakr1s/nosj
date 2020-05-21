@@ -14,10 +14,14 @@ func main() {
 
 		`[{"text": "hello!", "user": {"name": "Pavel", "token": "12345"}},
 		{"text": "hello!", "user": {"name": "Pavel", "token": "12345"}}]`,
+
+		`{"text": "hello!", "users": [ {"name": "Pavel", "token": "12345"},
+		{"name": "Smb", "token": "54321"}
+		] }`,
 	}
 
 	for _, c := range cases {
 		n := nosj.ParseString(c)
-		log.Print(n)
+		log.Println(n.PrettyString())
 	}
 }
