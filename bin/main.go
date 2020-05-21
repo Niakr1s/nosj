@@ -8,9 +8,9 @@ import (
 
 func main() {
 	cases := []string{
-		// `{"name": "Pavel"}`,
-		// `{"text": "hello!", "name": "Pavel"}`,
-		// `{"text": "hello!", "user": {"name": "Pavel", "token": "12345"}}`,
+		`{"name": "Pavel"}`,
+		`{"text": "hello!", "name": "Pavel"}`,
+		`{"text": "hello!", "user": {"name": "Pavel", "token": "12345"}}`,
 
 		`[{"text": "hello!", "user": {"name": "Pavel", "token": "12345"}},
 		{"text": "hello!", "user": {"name": "Pavel", "token": "12345"}}]`,
