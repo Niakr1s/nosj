@@ -1,7 +1,6 @@
 package nosj
 
 import (
-	"bufio"
 	"strings"
 	"testing"
 )
@@ -18,9 +17,7 @@ func TestObject_getKey(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			s := bufio.NewScanner(strings.NewReader(tt.inputStr))
-			s.Split(bufio.ScanRunes)
-			s.Scan()
+			s := prepareScanner((strings.NewReader(tt.inputStr)))
 
 			key := tt.o.getKey(s)
 
@@ -29,7 +26,7 @@ func TestObject_getKey(t *testing.T) {
 			}
 
 			if rem := ConsumeScanner(s); rem != tt.expectedRemainingStr {
-				t.Errorf("expected remaining %s, got %s", tt.expectedRemainingStr, rem)
+				t.Errorf("expected remaining <<%s>>, got <<%s>>", tt.expectedRemainingStr, rem)
 			}
 		})
 	}

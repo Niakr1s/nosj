@@ -1,6 +1,10 @@
 package nosj
 
-import "bufio"
+import (
+	"bufio"
+	"fmt"
+	"strings"
+)
 
 type Object struct {
 	items map[string]Node
@@ -19,7 +23,7 @@ func (o *Object) Parse(s *bufio.Scanner) Node {
 
 	for {
 		key := o.getKey(s)
-		o.items[key] = Parse(s)
+		o.items[key] = parse(s)
 		SkipSpaces(s)
 		if s.Text() == "," {
 			s.Scan()

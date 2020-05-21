@@ -2,6 +2,7 @@ package nosj
 
 import (
 	"reflect"
+	"strings"
 	"testing"
 )
 
@@ -17,7 +18,7 @@ func TestString_Parse(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			s := ScannerFromString(tt.inputStr)
+			s := prepareScanner(strings.NewReader(tt.inputStr))
 
 			if got := tt.str.Parse(s); !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("String.Parse() = %v, want %v", got, tt.want)

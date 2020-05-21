@@ -2,7 +2,6 @@ package nosj
 
 import (
 	"bufio"
-	"strings"
 )
 
 func SkipSpaces(s *bufio.Scanner) {
@@ -21,9 +20,9 @@ start:
 			}
 			// if not - return
 		}
-			return
-		}
+		return
 	}
+}
 
 func ScanQuote(s *bufio.Scanner) string {
 	res := ""
@@ -50,11 +49,4 @@ func ConsumeScanner(s *bufio.Scanner) string {
 	}
 
 	return res
-}
-
-func ScannerFromString(str string) *bufio.Scanner {
-	s := bufio.NewScanner(strings.NewReader(str))
-	s.Split(bufio.ScanRunes)
-	s.Scan()
-	return s
 }

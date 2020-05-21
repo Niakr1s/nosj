@@ -1,21 +1,38 @@
 package nosj
 
-import "bufio"
+import (
+	"bufio"
+	"strings"
+)
 
-// Parse parses first json object in s into Node
+func ParseString(str string) Node {
+	s := prepareScanner(strings.NewReader(str))
+	return parse(s)
+}
+
+func prepareScanner(r *strings.Reader) *bufio.Scanner {
+	s := bufio.NewScanner(r)
+	s.Split(bufio.ScanRunes)
+	s.Scan()
+	return s
+}
+
+// parse parses first json object in s into Node
 // s must be splitted with bufio.SplitRunes!
-func Parse(s *bufio.Scanner) Node {
+func parse(s *bufio.Scanner) Node {
 	var res Node
 
 	SkipSpaces(s)
 
-	if s.Text() == "[" {
+	r := s.Text()
+
+	if r == "[" {
 		res = NewArray()
 	}
-	if s.Text() == "{" {
+	if r == "{" {
 		res = NewObject()
 	}
-	if s.Text() == `"` {
+	if r == `"` {
 		res = NewString()
 	}
 

@@ -1,20 +1,13 @@
 package main
 
 import (
-	"bufio"
-	"strings"
+	"log"
 
 	"github.com/niakr1s/nosj"
 )
 
 func main() {
-	r := strings.NewReader(`{"name":"pavel"}`)
-	s := bufio.NewScanner(r)
-	s.Split(bufio.ScanRunes)
+	got := nosj.ParseString(`{"name": "Pavel"}`)
 
-	node := nosj.Parse(s)
-
-	if node == nil {
-		panic("no")
-	}
+	log.Print(got)
 }
