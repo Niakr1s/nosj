@@ -10,18 +10,20 @@ func SkipSpaces(s *bufio.Scanner) {
 }
 
 func Skip(s *bufio.Scanner, runes ...string) {
+start:
 	for {
 		for _, r := range runes {
+			text := s.Text()
 			// if s.Text - one of skipped runes - scan and continue
-			if r == s.Text() {
+			if r == text {
 				s.Scan()
-				continue
+				continue start
 			}
 			// if not - return
+		}
 			return
 		}
 	}
-}
 
 func ScanQuote(s *bufio.Scanner) string {
 	res := ""
