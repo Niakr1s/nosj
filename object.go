@@ -21,6 +21,7 @@ func (o *Object) Parse(s *bufio.Scanner) Node {
 		o.items[key] = Parse(s)
 		SkipSpaces(s)
 		if s.Text() == "," {
+			s.Scan()
 			continue
 		}
 		break
