@@ -19,19 +19,20 @@ func (a *Array) Parse(s *bufio.Scanner) Node {
 		return nil
 	}
 	s.Scan()
-	SkipSpaces(s)
+	SkipSpacesWith(s)
 
 	for {
 		a.items = append(a.items, parse(s))
-		SkipSpaces(s)
+		SkipSpacesWith(s)
 		if s.Text() == "," {
 			s.Scan()
+			SkipSpacesWith(s)
 			continue
 		}
 		break
 	}
 
-	SkipSpaces(s)
+	SkipSpacesWith(s)
 
 	if s.Text() == "]" {
 		s.Scan()

@@ -19,20 +19,21 @@ func (o *Object) Parse(s *bufio.Scanner) Node {
 		return nil
 	}
 	s.Scan()
-	SkipSpaces(s)
+	SkipSpacesWith(s)
 
 	for {
 		key := o.getKey(s)
 		o.items[key] = parse(s)
-		SkipSpaces(s)
+		SkipSpacesWith(s)
 		if s.Text() == "," {
 			s.Scan()
+			SkipSpacesWith(s)
 			continue
 		}
 		break
 	}
 
-	SkipSpaces(s)
+	SkipSpacesWith(s)
 
 	if s.Text() == "}" {
 		s.Scan()
@@ -47,7 +48,7 @@ func (o *Object) Parse(s *bufio.Scanner) Node {
 // for example input `"name" : "pavel"}`
 // will be consumed till `"pavel"}`
 func (o *Object) getKey(s *bufio.Scanner) string {
-	SkipSpaces(s)
+	SkipSpacesWith(s)
 
 	res := ""
 
@@ -57,7 +58,7 @@ func (o *Object) getKey(s *bufio.Scanner) string {
 
 	res = ScanQuote(s)
 
-	Skip(s, " ", ":")
+	SkipSpacesWith(s, ":")
 
 	return res
 }

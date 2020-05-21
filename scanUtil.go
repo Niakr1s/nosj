@@ -4,15 +4,16 @@ import (
 	"bufio"
 )
 
-func SkipSpaces(s *bufio.Scanner) {
-	Skip(s, " ")
+func SkipSpacesWith(s *bufio.Scanner, runes ...string) {
+	runes = append(runes, " ", "\n", "\r", "\t")
+	Skip(s, runes...)
 }
 
 func Skip(s *bufio.Scanner, runes ...string) {
 start:
 	for {
+		text := s.Text()
 		for _, r := range runes {
-			text := s.Text()
 			// if s.Text - one of skipped runes - scan and continue
 			if r == text {
 				s.Scan()

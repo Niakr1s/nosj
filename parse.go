@@ -22,7 +22,7 @@ func prepareScanner(r *strings.Reader) *bufio.Scanner {
 func parse(s *bufio.Scanner) Node {
 	var res Node
 
-	SkipSpaces(s)
+	SkipSpacesWith(s)
 
 	r := s.Text()
 
