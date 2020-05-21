@@ -19,5 +19,5 @@ func (str *String) Parse(s *bufio.Scanner) Node {
 }
 
 func (str *String) String() string {
-	return fmt.Sprintf(`%s`, str.s)
+	return fmt.Sprintf(`"%s"`, str.s)
 }

@@ -66,7 +66,7 @@ func (o *Object) String() string {
 	res := "{"
 
 	for k, v := range o.items {
-		res += fmt.Sprintf(`"%s" : "%s", `, k, v)
+		res += fmt.Sprintf(`"%s" : %s, `, k, v)
 	}
 
 	res = strings.TrimSuffix(res, ", ")
