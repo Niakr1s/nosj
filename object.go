@@ -15,6 +15,7 @@ func (o *Object) Parse(s *bufio.Scanner) Node {
 		return nil
 	}
 	s.Scan()
+	SkipSpaces(s)
 
 	for {
 		key := o.getKey(s)
