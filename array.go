@@ -42,7 +42,7 @@ func (a *Array) Parse(s *bufio.Scanner) Node {
 }
 
 func (a *Array) String() string {
-	res := "["
+	res := "[ "
 
 	for _, v := range a.items {
 		res += fmt.Sprintf("%v, ", v)
@@ -50,7 +50,7 @@ func (a *Array) String() string {
 
 	res = strings.TrimSuffix(res, ", ")
 
-	res += "]"
+	res += " ]"
 
 	return res
 }

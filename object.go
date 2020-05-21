@@ -72,7 +72,7 @@ func (o *Object) String() string {
 
 	res = strings.TrimSuffix(res, ", ")
 
-	res += "}"
+	res += " }"
 
 	return res
 }
