@@ -44,10 +44,10 @@ func (a *Array) String() string {
 	res := "["
 
 	for _, v := range a.items {
-		res += fmt.Sprintf("%v,", v)
+		res += fmt.Sprintf("%v, ", v)
 	}
 
-	res = strings.TrimSuffix(res, ",")
+	res = strings.TrimSuffix(res, ", ")
 
 	res += "]"
 
